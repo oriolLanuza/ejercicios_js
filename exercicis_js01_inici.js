@@ -93,7 +93,6 @@ function getNumber(msg) {
 
 function sumNotNegative(sum = 0) {
     let num = getNumber("Numero a sumar (<=0 para resultado)")
-    console.log(num)
     if (num > 0) {
         sum += num
         sumNotNegative(sum)
@@ -102,15 +101,98 @@ function sumNotNegative(sum = 0) {
     }
 }
 
-function sumStatsNotNegative(numArray) {
-    let num = getNumber("Numero a sumar (<=0 para resultado)")
-    console.log(num)
-    if ((num > 0) && (sum != 0)) {
-        sum += num
-        sumNotNegative(sum)
-    } else if (sum <= 0) {
+function arrayMin(numArray) {
+    return numArray.sort(function(a, b) { return a - b })[0]
+}
+
+function arrayMax(numArray) {
+    return numArray.sort(function(a, b) { return a - b })[numArray.length - 1]
+}
+
+function arraySum(numArray) {
+    return numArray.reduce((a, b) => a + b, 0)
+}
+
+function arrayAverage(numArray) {
+    return arraySum(numArray) / numArray.length
+}
+
+// sumStatsNotNegative([])
+
+function sumStatsNotNegative(numArray = []) {
+    let num = getNumber("Numeros (<=0 para resultado)")
+    if (num > 0) {
+        numArray[numArray.length] = (num)
+        sumStatsNotNegative(numArray)
+    } else if ((num <= 0) && (numArray[0] == undefined)) {
         console.log("Error: Debes introducir almenos un numero.")
     } else {
-        console.log("La suma de los valores introducidos es " + sum)
+        console.log("El numero mayor es " + arrayMax(numArray) + ", el numero menor es " + arrayMin(numArray) + ", la media es " + arrayAverage(numArray))
     }
+}
+
+// calcFactorial(5)
+
+function factorial(num) {
+    if (num <= 1) {
+        return 1
+    } else {
+        return num * factorial(num - 1)
+    }
+}
+
+function calcFactorial(num) {
+    console.log("El producto factorial de " + num + " es " + factorial(num))
+}
+
+// sumEven(10)
+
+function sumEven(num) {
+    let sum = 0
+    for (i = 1; i <= num; i++) {
+        if ((i % 2) == 0) {
+            sum += i
+        }
+    }
+    console.log("La suma de los " + num + " numeros pares es " + sum)
+}
+
+// inputPassword()
+
+function checkPassword(pass) {
+    if (pass == "rebeca") {
+        return true
+    } else {
+        return false
+    }
+}
+
+function attemptPassword(pass, attempt = 1) {
+    if (attempt < 3) {
+        if (checkPassword(pass)) {
+            console.log("Contraseña correcta")
+
+        } else {
+            console.log("Intente de nuevo")
+            attemptPassword(prompt("Intente de nuevo"), attempt + 1)
+        }
+    } else {
+        console.log("Acceso denegado")
+    }
+}
+
+function inputPassword() {
+    attemptPassword(prompt("Contraseña ==> "))
+}
+
+// bombDelay(5)
+
+function bombDelay(time) {
+    if (time > 0) {
+        console.log(time + "...")
+        setTimeout(bombDelay, 1000, time - 1)
+    } else {
+        console.log("BOOOOOOOOM!")
+    }
+
 }
