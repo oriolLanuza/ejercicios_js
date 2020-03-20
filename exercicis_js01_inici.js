@@ -178,21 +178,22 @@ const arrayAverageArr = numArray => (arraySum(numArray) / numArray.length)
 
 // console.log(arrayAverageArr([2, 3, 4, 1, 3, 5, 2]))
 
-// sumStatsNotNegative([])
-
 const sumStatsNotNegative = function(numArray = []) {
-    let num = getNumber("Numeros (<=0 para resultado)")
-    if (num > 0) {
-        numArray[numArray.length] = (num)
-        sumStatsNotNegative(numArray)
-    } else if ((num <= 0) && (numArray[0] == undefined)) {
-        console.log("Error: Debes introducir almenos un numero.")
-    } else {
-        console.log("El numero mayor es " + arrayMax(numArray) + ", el numero menor es " + arrayMin(numArray) + ", la media es " + arrayAverage(numArray))
+        let num = getNumber("Numeros (<=0 para resultado)")
+        if (num > 0) {
+            numArray[numArray.length] = (num)
+            sumStatsNotNegative(numArray)
+        } else if ((num <= 0) && (numArray[0] == undefined)) {
+            console.log("Error: Debes introducir almenos un numero.")
+        } else {
+            console.log("El numero mayor es " + arrayMax(numArray) + ", el numero menor es " + arrayMin(numArray) + ", la media es " + arrayAverage(numArray))
+        }
     }
-}
+    //////////////////////////NO FUNCIONA!/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// MILLORA APPEND??????//////
+const sumStatsNotNegativeArr = (numArray = [], num = +prompt("Introducir numero (<=0 para resultado)")) => (num > 0) ? sumStatsNotNegativeArr(numArray[numArray.length] = (num)) : (((num <= 0) && (numArray[0] == undefined)) ? console.log("Error: Debes introducir almenos un numero.") : console.log(`El numero mayor es ${arrayMax(numArray)}, el numero menor es ${arrayMin(numArray)}, la media es ${arrayAverage(numArray)}`))
 
-// showFactorial(5)
+// sumStatsNotNegative([])
+// sumStatsNotNegativeArr()
 
 const factorial = function(num) {
     if (num <= 1) {
@@ -206,7 +207,12 @@ const showFactorial = function(num) {
     console.log("El producto factorial de " + num + " es " + factorial(num))
 }
 
-// sumEven(10)
+const factorialArr = num => (num <= 1) ? 1 : console.log(num * factorial(num - 1))
+
+// showFactorial(5)
+// factorialArr(5)
+
+
 
 const sumEven = function(num) {
     let sum = 0
@@ -217,6 +223,16 @@ const sumEven = function(num) {
     }
     console.log("La suma de los " + num + " numeros pares es " + sum)
 }
+
+const sumEvenArr = (num, sum = 0) => {
+    for (i = 1; i <= num; i++) {
+        ((i % 2) == 0) ? sum += i: null
+    }
+    console.log(`La suma de los ${num} numeros pares es ${sum}`)
+}
+
+// sumEven(10)
+// sumEvenArr(10)
 
 // inputPassword()
 
