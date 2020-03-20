@@ -150,7 +150,7 @@ const arrayMin = function(numArray) {
     return numArray.sort(function(a, b) { return a - b })[0]
 }
 
-const arrayMinArr = numArray => numArray.sort((a, b) => a - b)[0]
+// const arrayMinArr = numArray => numArray.sort((a, b) => a - b)[0]
 
 // console.log(arrayMinArr([2, 3, 4, 1, 3, 5, 2]))
 
@@ -158,7 +158,7 @@ const arrayMax = function(numArray) {
     return numArray.sort(function(a, b) { return a - b })[numArray.length - 1]
 }
 
-const arrayMaxArr = numArray => numArray.sort((a, b) => a - b)[numArray.length - 1]
+// const arrayMaxArr = numArray => numArray.sort((a, b) => a - b)[numArray.length - 1]
 
 // console.log(arrayMaxArr([2, 3, 4, 1, 3, 5, 2]))
 
@@ -166,7 +166,7 @@ const arraySum = function(numArray) {
     return numArray.reduce((a, b) => a + b, 0)
 }
 
-const arraySumArr = numArray => numArray.reduce((a, b) => a + b, 0)
+// const arraySumArr = numArray => numArray.reduce((a, b) => a + b, 0)
 
 // console.log(arraySumArr([2, 3, 4, 1, 3, 5, 2]))
 
@@ -174,23 +174,33 @@ const arrayAverage = function(numArray) {
     return arraySum(numArray) / numArray.length
 }
 
-const arrayAverageArr = numArray => (arraySum(numArray) / numArray.length)
+// const arrayAverageArr = numArray => (arraySum(numArray) / numArray.length)
 
 // console.log(arrayAverageArr([2, 3, 4, 1, 3, 5, 2]))
 
+
+
+const arrayMinArr = numArray => numArray.sort((a, b) => a - b)[0]
+
+const arrayMaxArr = numArray => numArray.sort((a, b) => a - b)[numArray.length - 1]
+
+const arraySumArr = numArray => numArray.reduce((a, b) => a + b, 0)
+
+const arrayAverageArr = numArray => (arraySumArr(numArray) / numArray.length)
+
 const sumStatsNotNegative = function(numArray = []) {
-        let num = getNumber("Numeros (<=0 para resultado)")
+        let num = +prompt("Numeros (<=0 para resultado) ==>")
         if (num > 0) {
             numArray[numArray.length] = (num)
             sumStatsNotNegative(numArray)
         } else if ((num <= 0) && (numArray[0] == undefined)) {
             console.log("Error: Debes introducir almenos un numero.")
         } else {
-            console.log("El numero mayor es " + arrayMax(numArray) + ", el numero menor es " + arrayMin(numArray) + ", la media es " + arrayAverage(numArray))
+            console.log(`El numero mayor es ${arrayMaxArr(numArray)}, el numero menor es ${arrayMinArr(numArray)}, la media es ${arrayAverageArr(numArray)}`)
         }
     }
     //////////////////////////NO FUNCIONA!/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// MILLORA APPEND??????//////
-const sumStatsNotNegativeArr = (numArray = [], num = +prompt("Introducir numero (<=0 para resultado)")) => (num > 0) ? sumStatsNotNegativeArr(numArray[numArray.length] = (num)) : (((num <= 0) && (numArray[0] == undefined)) ? console.log("Error: Debes introducir almenos un numero.") : console.log(`El numero mayor es ${arrayMax(numArray)}, el numero menor es ${arrayMin(numArray)}, la media es ${arrayAverage(numArray)}`))
+const sumStatsNotNegativeArr = (numArray = [], num = +prompt("Introducir numero (<=0 para resultado)")) => (num > 0) ? sumStatsNotNegativeArr(numArray[numArray.length] = (num)) : (((num <= 0) && (numArray[0] == undefined)) ? console.log("Error: Debes introducir almenos un numero.") : console.log(`El numero mayor es ${arrayMaxArr(numArray)}, el numero menor es ${arrayMinArr(numArray)}, la media es ${arrayAverageArr(numArray)}`))
 
 // sumStatsNotNegative([])
 // sumStatsNotNegativeArr()
@@ -207,7 +217,7 @@ const showFactorial = function(num) {
     console.log("El producto factorial de " + num + " es " + factorial(num))
 }
 
-const factorialArr = num => (num <= 1) ? 1 : console.log(num * factorial(num - 1))
+const factorialArr = num => (num <= 1) ? 1 : console.log(num * factorialArr(num - 1))
 
 // showFactorial(5)
 // factorialArr(5)
@@ -264,7 +274,7 @@ const inputPassword = function() {
 
 
 
-const bombDelay = function(time) {
+const bombDelay = function(time = +prompt("Time ==>")) {
     if (time > 0) {
         console.log(time + "...")
         setTimeout(bombDelay, 1000, time - 1)
@@ -273,4 +283,8 @@ const bombDelay = function(time) {
     }
 }
 
-// bombDelay(5)
+// bombDelay()
+
+const bombDelayArr = (time = +prompt("Time ==>")) => (time > 0) ? (console.log(time + "..."), setTimeout(bombDelayArr, 1000, time - 1)) : console.log("BOOOOOOOOM!")
+
+// bombDelayArr()
