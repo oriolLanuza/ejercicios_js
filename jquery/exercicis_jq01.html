@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <title>Ejercicios jQuery</title>
+    <style>
+        body {
+            padding: 50px;
+        }
+        
+        div.circulo {
+            height: 50px;
+            width: 50px;
+            border-radius: 50px;
+            background-color: grey;
+            display: inline-block
+        }
+        
+        div.circulo.verde {
+            background-color: green;
+        }
+        
+        div.circulo.verde {
+            background-color: green;
+        }
+        
+        div.circulo.rojo {
+            background-color: red;
+        }
+        
+        div.circulo.grey {
+            background-color: grey;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="circulo"></div>
+    <div class="circulo"></div>
+    <div class="circulo"></div>
+    <div class="circulo"></div>
+    <div class="circulo"></div>
+    <input id="btn-red" type="button" value="red" onclick="setRed">
+    <input id="btn-green" type="button" value="green">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).on("click", "#btn-red", setRed)
+        $(document).on("click", "#btn-green", setGreen)
+        $(document).on("click", ".circulo", toggleGrey)
+
+        function setRed() {
+            $(".circulo").addClass("rojo");
+            $(".circulo").removeClass("verde");
+        }
+
+        function setGreen() {
+            $(".circulo").addClass("verde");
+            $(".circulo").removeClass("rojo");
+        }
+
+        function toggleGrey() {
+            $(this).toggleClass("grey");
+        }
+    </script>
+
+</body>
+
+</html>
