@@ -7,19 +7,24 @@
         body {
             padding: 50px;
         }
-        
-        Introducir aquí CSS del ejercicio
     </style>
 
 </head>
 
 <body>
+    <input type="text" name="" id="text1">
+    <input id="btn-copy" type="button" value="copy">
+    <input type="text" name="" id="text2">
 
-    Introducir aquí HTML del ejercicio
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript">
-        Introducir aquí código Javascrip / jQuery
+        $(document).on("click", "#btn-copy", copy)
+
+        function copy() {
+            let txt = $("#text1").val();
+            $("#text2").val(txt);
+        }
     </script>
 
 </body>

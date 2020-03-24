@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <title>Ejercicios jQuery</title>
+    <style>
+        body {
+            padding: 50px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <input id="btn-minus" type="button" value="-">
+    <input type="text" name="" id="text1" value="0" disabled="">
+    <input id="btn-plus" type="button" value="+">
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).on("click", "#btn-minus", minus)
+        $(document).on("click", "#btn-plus", plus)
+
+        function minus() {
+            let num = +$("#text1").val();
+            (num > -10) ? $("#text1").val(num - 1): null
+        }
+
+        function plus() {
+            let num = +$("#text1").val();
+            (num < 10) ? $("#text1").val(num + 1): null
+        }
+    </script>
+
+</body>
+
+</html>

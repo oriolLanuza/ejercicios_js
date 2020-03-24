@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <title>Ejercicios jQuery</title>
+    <style>
+        body {
+            padding: 50px;
+        }
+        
+        .cell {
+            border: 1px solid blue;
+        }
+    </style>
+
+</head>
+
+<body>
+    <input type="text" name="" id="text1">
+    <input id="btn-modify" type="button" value="modify">
+    <input id="btn-add" type="button" value="add">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td class="cell" scope="row"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+            </tr>
+            <tr>
+                <td class="cell" scope="row"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+            </tr>
+            <tr>
+                <td class="cell" scope="row"></td>
+                <td class="cell"></td>
+                <td class="cell"></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).on("click", "#btn-modify", modify)
+        $(document).on("click", "#btn-add", add)
+
+        function modify() {
+            let txt = $("#text1").val();
+            $(".cell").text(txt);
+        }
+
+        function add() {
+            let txt = $("#text1").val();
+            $(".cell").append(" " + txt);
+        }
+    </script>
+
+</body>
+
+</html>
