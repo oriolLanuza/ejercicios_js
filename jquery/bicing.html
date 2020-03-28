@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Bicing!</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <input name="load-data" id="load-data" class="btn btn-primary" type="button" value="Cargar datos!">
+        </div>
+        <div class="row">
+            <table id="tbl-bicing" class="table">
+                <thead>
+                    <tr>
+                        <th>Estación</th>
+                        <th>Bicis</th>
+                        <th>Slots libres</th>
+                        <th>Latitud</th>
+                        <th>Longitud</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        $(document).on("click", "#load-data", loadData)
+
+        function loadData() {
+            $.getJSON("https://api.citybik.es/v2/networks/bicing", function(data) {
+                for (estacio of data.network.stations) {
+                    let newRow = `<tr>
+                        <td scope="row">${estacio.name}</td>
+                        <td>${estacio.free_bikes}</td>
+                        <td>${estacio.free_slots}</td>
+                        <td>${estacio.latitude}</td>
+                        <td>${estacio.longitude}</td>
+                    </tr>`
+                    $("#tbl-bicing tbody").append(newRow);
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
