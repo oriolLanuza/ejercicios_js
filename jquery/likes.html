@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Likes</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        i.icon-like {
+            top: 15px;
+            right: 15px;
+            font-size: 40px;
+        }
+        
+        i.red-color {
+            color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <h1>Like counter!</h1>
+            <input name="like-counter" id="like-counter" class="btn btn-primary" type="button" value="Likes: 0">
+        </div>
+        <div class="row">
+            <div class="card" style="width: 18rem;">
+                <div class="image-card position-relative">
+                    <img class="card-img-top" src="http://placekitten.com/200/200" alt="Card image cap">
+                    <i class="icon-like fa fa-heart-o position-absolute" aria-hidden="true"></i>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <div class="image-card position-relative">
+                    <img class="card-img-top" src="http://placekitten.com/200/200" alt="Card image cap">
+                    <i class="icon-like fa fa-heart-o position-absolute" aria-hidden="true"></i>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <div class="image-card position-relative">
+                    <img class="card-img-top" src="http://placekitten.com/200/200" alt="Card image cap">
+                    <i class="icon-like fa fa-heart-o position-absolute" aria-hidden="true"></i>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <div class="image-card position-relative">
+                    <img class="card-img-top" src="http://placekitten.com/200/200" alt="Card image cap">
+                    <i class="icon-like fa fa-heart-o position-absolute" aria-hidden="true"></i>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).on("click", ".icon-like", clickLike)
+        let likes = 0
+
+        function clickLike() {
+            $(this).hasClass("fa-heart-o") ? likes++ : likes--
+                $(this).toggleClass("fa-heart-o fa-heart red-color")
+            $("#like-counter").val("Total likes:" + likes)
+            console.log(likes)
+        }
+    </script>
+
+</body>
+
+</html>
